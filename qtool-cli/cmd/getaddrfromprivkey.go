@@ -1,13 +1,12 @@
 /*
 Copyright © 2022 Alejo Acosta <alejoacos@gmail.com>
-
 */
 package cmd
 
 import (
 	"fmt"
 
-	"github.com/alejoacosta74/qtool/pkg/tools"
+	"github.com/qtumproject/qtool/pkg/tools"
 	"github.com/spf13/cobra"
 )
 

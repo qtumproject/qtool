@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/alejoacosta74/qtool/pkg/tools"
-	"github.com/alejoacosta74/qtool/qtool-api/types"
+	"github.com/qtumproject/qtool/pkg/tools"
+	"github.com/qtumproject/qtool/qtool-api/types"
 )
 
 const (

@@ -3,8 +3,8 @@ package server
 import (
 	"os"
 
-	"github.com/alejoacosta74/qtool/qtool-api/handlers"
-	"github.com/alejoacosta74/qtool/qtool-api/log"
+	"github.com/qtumproject/qtool/qtool-api/handlers"
+	"github.com/qtumproject/qtool/qtool-api/log"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"

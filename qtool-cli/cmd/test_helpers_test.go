@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/alejoacosta74/qtool/pkg/tools"
+	"github.com/qtumproject/qtool/pkg/tools"
 	"github.com/spf13/cobra"
 	"github.com/stretchr/testify/assert"
 )
@@ -39,7 +39,3 @@ func loadSampleValues() (*tools.SampleValues, error) {
 	p := filepath.Join("../../pkg/tools/testdata", sampleFileName)
 	return tools.LoadSampleValues(p)
 }
-
-// func assertCmdComplete(t *testing.T, cmd cobra.Command, args []string) {
-
-// }

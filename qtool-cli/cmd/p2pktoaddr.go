@@ -1,6 +1,5 @@
 /*
 Copyright © 2022 alejoacos@gmail.com
-
 */
 package cmd
 
@@ -9,7 +8,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/alejoacosta74/qtool/pkg/tools"
+	"github.com/qtumproject/qtool/pkg/tools"
 )
 
 const OP_CHECKSIG = "ac"

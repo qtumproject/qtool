@@ -1,4 +1,4 @@
-module github.com/alejoacosta74/qtool
+module github.com/qtumproject/qtool
 
 go 1.18
 

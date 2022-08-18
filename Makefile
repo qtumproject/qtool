@@ -47,5 +47,10 @@ build:
 	go build -v -o ${BIN}/qtool-api ./qtool-api/main.go
 	go build -v -o ${BIN}/qtool-cli ./qtool-cli/main.go
 
+run-docker:
+	$(info ******************** running qtool-api on docker container ********************)
+	docker build -t qtum/qtool-api .
+	docker run -d -p 8080:8080 qtum/qtool-api
+
 clean:
 	rm -rf $(BIN)

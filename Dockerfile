@@ -1,13 +1,15 @@
-FROM golang:1.14-alpine
+FROM golang:1.18-alpine
 
 RUN apk add --no-cache make gcc musl-dev git
 
-WORKDIR /qtool-api
-COPY ./ /qtool
-
-RUN go build \
-        -o /qtool//bin /qtool-api/...
+WORKDIR /app
+COPY ./go.mod .
+COPY ./go.sum .
+RUN go mod download
+COPY ./qtool-api ./qtool-api
+COPY ./pkg  ./pkg
+RUN cd qtool-api && go build -o /app/bin/qtool-api
 
 EXPOSE 8080
 
-ENTRYPOINT [ "qtool-api" ]
+CMD [ "/app/bin/qtool-api" ]

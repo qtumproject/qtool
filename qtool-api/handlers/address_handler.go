@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/alejoacosta74/qtool/pkg/tools"
-	"github.com/alejoacosta74/qtool/qtool-api/types"
 	"github.com/labstack/echo/v4"
+	"github.com/qtumproject/qtool/pkg/tools"
+	"github.com/qtumproject/qtool/qtool-api/types"
 )
 
 func AddressHandler(c echo.Context) error {

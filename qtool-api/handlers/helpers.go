@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/alejoacosta74/qtool/qtool-api/types"
 	"github.com/labstack/echo/v4"
+	"github.com/qtumproject/qtool/qtool-api/types"
 )
 
 // creates and sends a new JSONRPCResponse object with the given error
