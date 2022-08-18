@@ -1,0 +1,12 @@
+{
+	"jsonrpc": "2.0",
+	"id": 1,
+	"method": "convertprivkey",
+	"params": [
+		{ 
+		"key": "00821d8c8a3627adc68aa4034fea953b2f5da553fab312db3fa274240bd49f35",
+		"format": "hex",
+		"network": "testnet"
+	}
+	]
+}
