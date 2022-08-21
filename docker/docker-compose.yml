@@ -9,10 +9,10 @@ services:
     environment:
         - COMPOSE_PROJECT_NAME=qtool
     volumes:
-      - ../nginx/conf.d:/etc/nginx/conf.d
-      - ../nginx/certbot/conf:/etc/letsencrypt
-      - ../nginx/certbot/data:/var/www/certbot
-      - ../nginx/dhparam:/etc/ssl/certs
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/certbot/conf:/etc/letsencrypt
+      - ./nginx/certbot/data:/var/www/certbot
+      - ./nginx/dhparam:/etc/ssl/certs
     ports:
       - 80:80
       - 443:443
@@ -21,16 +21,34 @@ services:
     restart: always
     container_name: qtool-api
     image: qtum/qtool-api:latest
-    build: path=../qtool-api/
+    build:
+      context: ../
+      dockerfile: Dockerfile
+
     environment:
         - COMPOSE_PROJECT_NAME=qtool
     ports:
       - 8080:8080
 
-  certbot:
-    image: certbot/certbot:latest
-    command: certonly --webroot --webroot-path=/var/www/certbot --email alejo@qtum.info --agree-tos --no-eff-email --staging -d remix.qtum.info
-    volumes:
-        - ../nginx/certbot/conf:/etc/letsencrypt
-        - ../nginx/certbot/logs:/var/log/letsencrypt
-        - ../nginx/certbot/data:/var/www/certbot
+  qtool-react:
+    restart: always
+    container_name: qtool-react
+    image: qtum/qtool-react:latest
+    build:
+      context: ../react-web-app/
+      dockerfile: Dockerfile
+    environment:
+        - COMPOSE_PROJECT_NAME=qtool
+        - REACT_APP_API_URL='window.document.location.origin + "/api"'
+    ports:
+      - 3000:80
+
+  # certbot:
+  #   image: certbot/certbot:latest
+  #   depends_on:
+  #     - serviceName: nginx
+  #   command: certonly --webroot --webroot-path=/var/www/certbot --email alejo@qtum.info --agree-tos --no-eff-email --staging -d qtool.qtum.info -d www.qtool.qtum.info
+  #   volumes:
+  #       - ../nginx/certbot/conf:/etc/letsencrypt
+  #       - ../nginx/certbot/logs:/var/log/letsencrypt
+  #       - ../nginx/certbot/data:/var/www/certbot

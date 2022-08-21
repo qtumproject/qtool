@@ -1,5 +1,9 @@
 import { commands, methods, sample } from "./constants";
 
+const API_URL = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_API_URL : window._env_.REACT_APP_API_URL;
+
+console.log("utils.js => API_URL: ", API_URL);
+
 export const createJSONRequest = (command, data, format, blockchain, network) => {
 	let method, params;
 
@@ -13,19 +17,15 @@ export const createJSONRequest = (command, data, format, blockchain, network) =>
 	switch (command) {
 		case commands[0]:
 			method = methods[0];
-			// params[0].key = data;
 			break;
 		case commands[1]:
 			method = methods[1];
-			// params[0].key = data;
 			break;
 		case commands[2]:
 			method = methods[2];
-			// params[0].key = data;
 			break;
 		case commands[3]:
 			method = methods[3];
-			// params[0].key = data;
 			break;
 		default:
 	}
@@ -44,16 +44,16 @@ export const getAPIEndpoint = (command) => {
 	let endpoint;
 	switch (command) {
 		case commands[0]:
-			endpoint = "http://localhost:8080/privatekey";
+			endpoint = API_URL+"/privatekey";
 			break;
 		case commands[1]:
-			endpoint = "http://localhost:8080/address";
+			endpoint = API_URL+"/address";
 			break;
 		case commands[2]:
-			endpoint = "http://localhost:8080/privatekey";
+			endpoint = API_URL+"/privatekey";
 			break;
 		case commands[3]:
-			endpoint = "http://localhost:8080/script";
+			endpoint = API_URL+"/script";
 			break;
 		default:
 	}

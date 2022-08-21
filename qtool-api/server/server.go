@@ -38,17 +38,19 @@ func (s *Server) Start() error {
 
 	s.echo = echo.New()
 	e := s.echo
-	// e.Debug = s.debug
 	e.Use(middleware.RequestLoggerWithConfig(middleware.RequestLoggerConfig{
 		LogURI:    true,
 		LogStatus: true,
 		LogValuesFunc: func(c echo.Context, values middleware.RequestLoggerValues) error {
 			logger.WithFields(logrus.Fields{
-				"URI":       values.URI,
-				"status":    values.Status,
-				"method":    values.Method,
-				"remote IP": values.RemoteIP,
-			}).Info("request received")
+				"URI":        values.URI,
+				"status":     values.Status,
+				"method":     values.Method,
+				"remote IP":  values.RemoteIP,
+				"host":       values.Host,
+				"user agent": values.UserAgent,
+				"headers":    values.Headers,
+			}).Debug("request received")
 
 			return nil
 		},
@@ -56,10 +58,9 @@ func (s *Server) Start() error {
 	e.Use(middleware.CORS())
 	e.Use(middleware.Recover())
 	e.POST("/privatekey", handlers.PrivateKeyHandler)
-	// e.POST("/publickey", handlers.PublicKey)
 	e.POST("/address", handlers.AddressHandler)
 	e.POST("/script", handlers.ScriptPubKeyHandler)
-	e.Debug = true
+	e.Debug = s.debug
 
 	err = e.Start(s.address)
 	if err != nil {

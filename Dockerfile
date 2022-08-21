@@ -1,4 +1,7 @@
-FROM golang:1.18-alpine
+ARG GO_VERSION=1.18
+ARG ALPINE_VERSION=3.16
+
+FROM golang:${GO_VERSION}-alpine as builder
 
 RUN apk add --no-cache make gcc musl-dev git
 
@@ -10,6 +13,9 @@ COPY ./qtool-api ./qtool-api
 COPY ./pkg  ./pkg
 RUN cd qtool-api && go build -o /app/bin/qtool-api
 
-EXPOSE 8080
+FROM alpine:${ALPINE_VERSION}
 
-CMD [ "/app/bin/qtool-api" ]
+WORKDIR /app/bin
+COPY --from=builder /app/bin/qtool-api .
+EXPOSE 8080
+CMD [ "./qtool-api" ]
