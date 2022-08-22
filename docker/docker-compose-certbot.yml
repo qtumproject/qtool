@@ -41,3 +41,13 @@ services:
         - COMPOSE_PROJECT_NAME=qtool
     ports:
       - 3000:80
+
+  certbot:
+    image: certbot/certbot:latest
+    depends_on:
+      - serviceName: nginx
+    command: certonly --webroot --webroot-path=/var/www/certbot --email alejo@qtum.info --agree-tos --no-eff-email --staging -d qtool.qtum.info 
+    volumes:
+        - ./nginx/certbot/conf:/etc/letsencrypt
+        - ./nginx/certbot/logs:/var/log/letsencrypt
+        - ./nginx/certbot/data:/var/www/certbot

@@ -28,5 +28,7 @@ RUN apk add --no-cache bash
 # Make our shell script executable
 RUN chmod +x env.sh
 
+# Script 'env.sh' will inject environment vars defined within .env into index.html to be used by React
+# CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && nginx -g \"daemon off;\""]
 # Start Nginx server
-CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && nginx -g \"daemon off;\""]
+CMD ["nginx -g \"daemon off;\""]

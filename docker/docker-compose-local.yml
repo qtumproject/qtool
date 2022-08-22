@@ -2,20 +2,6 @@ version: "3.8"
 
 
 services:
-  nginx:
-    restart: always
-    container_name: nginx
-    image: nginx:latest
-    environment:
-        - COMPOSE_PROJECT_NAME=qtool
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./nginx/certbot/conf:/etc/letsencrypt
-      - ./nginx/certbot/data:/var/www/certbot
-      - ./nginx/dhparam:/etc/ssl/certs
-    ports:
-      - 80:80
-      - 443:443
 
   qtool-api:
     restart: always
@@ -39,5 +25,6 @@ services:
       dockerfile: Dockerfile
     environment:
         - COMPOSE_PROJECT_NAME=qtool
+        - NODE_ENV=development
     ports:
       - 3000:80

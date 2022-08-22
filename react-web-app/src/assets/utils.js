@@ -1,6 +1,6 @@
 import { commands, methods, sample } from "./constants";
 
-const API_URL = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_API_URL : window._env_.REACT_APP_API_URL;
+const API_URL = process.env.NODE_ENV === 'development' ? "http://localhost:8080" : window.document.location.origin + "/api";
 
 console.log("utils.js => API_URL: ", API_URL);
 

@@ -16,10 +16,6 @@ ifeq (, $(shell which richgo))
 $(warning "could not find richgo in $(PATH), run: go get github.com/kyoh86/richgo")
 endif
 
-default: all
-
-all: fmt test
-
 fmt:
 	$(info ******************** checking formatting ********************)
 	@test -z $(shell gofmt -l $(SRC)) || (gofmt -d $(SRC); exit 1)
@@ -64,11 +60,11 @@ run-react:
 
 start-compose:
 	$(info ******************** running qtool on docker compose ********************)
-	@cd docker ; docker-compose up -d
+	@cd docker ; docker-compose -f docker-compose-local.yml up -d
 
 stop-compose:
 	$(info ******************** stopping containers from docker compose ********************)
-	@cd docker ; docker-compose down
+	@cd docker ; docker-compose -f docker-compose-local.yml down
 
 clean:
 	rm -rf $(BIN)
