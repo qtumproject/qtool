@@ -19,12 +19,12 @@ services:
   qtool-react:
     restart: always
     container_name: qtool-react
-    image: qtum/qtool-react:latest
+    image: qtum/qtool-react:dev
     build:
       context: ../react-web-app/
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     environment:
         - COMPOSE_PROJECT_NAME=qtool
         - NODE_ENV=development
     ports:
-      - 3000:80
+      - 3000:3000

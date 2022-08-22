@@ -100,7 +100,18 @@ qtool
 
 ## Qtool web ui
 
-- Running react based UI for Qtool
+- Starting / stoppping qtool-api and react web UI in dev environment
 
-(TBD)
+```bash
+make start-compose-dev
+make stop-compose-dev
+```
+
+- Starting / stopping qtool-api and react web UI in prod environment
+
+```bash
+make start-compose-prod
+make stop-compose-prod
+```
+
 

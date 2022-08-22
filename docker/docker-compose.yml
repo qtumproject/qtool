@@ -27,6 +27,7 @@ services:
 
     environment:
         - COMPOSE_PROJECT_NAME=qtool
+        # - REACT_APP_API_URL=
     ports:
       - 8080:8080
 
@@ -36,7 +37,7 @@ services:
     image: qtum/qtool-react:latest
     build:
       context: ../react-web-app/
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     environment:
         - COMPOSE_PROJECT_NAME=qtool
     ports:

@@ -1,6 +1,8 @@
 .PHONY: deps build run run-api-docker \
-	fmt lint test install_deps clean coverage format 
+	fmt lint test install_deps clean coverage format \
+	stop-compose-dev
 SHELL=/bin/bash
+REBUILD=false
 BIN="./bin"
 SRC=$(shell find . -name "*.go")
 GOVERALLS_INSTALL=go install github.com/mattn/goveralls@latest
@@ -38,33 +40,48 @@ coverage:
 	${GOVERALLS_INSTALL}
 	if [ "${COVERALLS_TOKEN}" ]; then ${TEST_SCRIPT} -coverprofile=c.out -covermode=count; ${GOVERALLS_CMD} -coverprofile=c.out -repotoken ${COVERALLS_TOKEN}; fi
 
-build-api:
-	$(info ******************** building qtool-api ********************)
-	go build -v -o ${BIN}/qtool-api ./qtool-api/main.go
-
 build-cli:
 	$(info ******************** building qtool-cli ********************)
 	go build -v -o ${BIN}/qtool-cli ./qtool-cli/main.go
 
-run-api:
-	$(info ******************** running qtool-api on docker container ********************)
+build-docker-api:
 	@IMAGE=$$(docker images -q qtum/qtool-api 2> /dev/null) ; \
-	if [ "$$IMAGE" == "" ] ; then docker build -t qtum/qtool-api . ; fi
-	docker run -d --rm -p 8080:8080 --name qtool-api qtum/qtool-api
+	if [ "$$IMAGE" == "" || $(REBUILD) ] ; \
+	$(info ******************** rebuilding qtool-api docker image ********************) \
+	then docker build -t qtum/qtool-api . ; \ 
+	fi
 
-run-react:
-	$(info ******************** running qtool react-web-app on docker container ********************)
+build-docker-react-prod:
 	@IMAGE=$$(docker images -q qtum/qtool-react 2> /dev/null) ; \
-	if [ "$$IMAGE" == "" ] ; then cd react-web-app; docker build -t qtum/qtool-react . ; fi
-	docker run -d --rm -p 3000:80 --name qtool-react qtum/qtool-react
+	if [ "$$IMAGE" == "" || $(REBUILD) ] ; \
+	$(info ******************** building qtool-react docker image ********************) \
+	then cd react-web-app; docker build -t qtum/qtool-react:latest . ; \ 
+	fi
 
-start-compose:
-	$(info ******************** running qtool on docker compose ********************)
-	@cd docker ; docker-compose -f docker-compose-local.yml up -d
+# run-docker-api: build-docker-api
+# 	$(info ******************** running qtool-api on docker container ********************)
+# 	docker run -d --rm -p 8080:8080 --name qtool-api qtum/qtool-api
 
-stop-compose:
-	$(info ******************** stopping containers from docker compose ********************)
-	@cd docker ; docker-compose -f docker-compose-local.yml down
+# run-docker-react: build-docker-react-prod
+# 	docker run -d --rm -p 3000:80 --name qtool-react qtum/qtool-react
+
+start-compose-prod:
+	$(info ******************** running PROD qtool web on docker compose ********************)
+	@cd docker ; docker-compose -f docker-compose.yml up -d
+
+stop-compose-prod:
+	$(info ******************** stopping PROD qtool web containers from docker compose ********************)
+	@cd docker ; docker-compose -f docker-compose.yml down
+
+start-compose-dev:
+	$(info ******************** running DEV qtool web on docker compose ********************)
+	@cd docker ; docker-compose -f docker-compose-dev.yml up -d
+
+stop-compose-dev:
+	$(info ******************** stopping DEV qtool web containers from docker compose ********************)
+	@cd docker ; docker-compose -f docker-compose-dev.yml down
 
 clean:
 	rm -rf $(BIN)
+	docker rm -f qtool-api qtool-react
+	docker rmi -f qtum/qtool-api qtum/qtool-react
