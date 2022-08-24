@@ -8,13 +8,6 @@ import (
 	"github.com/qtumproject/qtool/qtool-api/types"
 )
 
-const (
-	privateKeyWIF = "cMbgxCJrTYUqgcmiC1berh5DFrtY1KeU4PXZ6NZxgenniF1mXCRk"
-	privateKeyHex = "00821d8c8a3627adc68aa4034fea953b2f5da553fab312db3fa274240bd49f35"
-	pubKey        = "0299d391f528b9edd07284c7e23df8415232a8ce41531cf460a390ce32b4efd112" // compressed
-
-)
-
 func TestHandlerPrivKeyConvert(t *testing.T) {
 
 	t.Run("ConvertPrivKey to Hex", func(t *testing.T) {

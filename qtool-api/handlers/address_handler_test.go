@@ -8,11 +8,6 @@ import (
 	"github.com/qtumproject/qtool/qtool-api/types"
 )
 
-const (
-	addressHex    = "7926223070547d2d15b2ef5e7383e541c338ffe9"
-	addressBase58 = "qUbxboqjBRp96j3La8D1RYkyqx5uQbJPoW"
-)
-
 func TestHandlerAddressConvert(t *testing.T) {
 
 	t.Run("Convert Address to Hex", func(t *testing.T) {
