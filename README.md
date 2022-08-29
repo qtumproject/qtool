@@ -4,7 +4,9 @@
 
 ## Overview
 
-`qtool` provides tools for handling crypto objects (like `addresses`, `keys` and `scriptPubKey`) using *qtum* specific parameters.
+`qtool` provides tools for handling cryptographic related objects (like *addresses, keys and scriptPubKey*) using **qtum** specific parameters.
+
+`qtool` is both a CLI tool and a JSON-RPC server, both exposing the same functionality
 
 The `qtool` web UI is available at [qtool.qtum.info](https://qtool.qtum.info)
 
@@ -19,7 +21,7 @@ The `qtool` web UI is available at [qtool.qtum.info](https://qtool.qtum.info)
 - Available commands
 
   ```bash
-    convertaddress     Converts a legacy address from one encoding to another
+    convertaddress     Converts a legacy address from hex encoding to base58 encoding (and vice-versa)
     convertprivkey     Converts the encoding of a ECDSA private key
     getaddrfromprivkey Gets a base 58 address from a given private key
     p2pktoaddr         Gets the b58 encoded address from a p2pk script
@@ -32,7 +34,7 @@ The `qtool` web UI is available at [qtool.qtum.info](https://qtool.qtum.info)
         --version             version for qtool
   ```
 
-- Detailed qtool-cli *command* info
+- Detailed qtool-cli *sub command* info
 
     [convertaddress](./qtool-cli/docs/qtool_convertaddress.md)
 
@@ -66,7 +68,7 @@ The `qtool` web UI is available at [qtool.qtum.info](https://qtool.qtum.info)
 
 
 ### 2. `qtool-api` 
-- web server that exposes all `qtool` utilities via a JSON-RPC api
+- web server that exposes `qtool` utilities via a JSON-RPC api
   
 - starting `qtool-api` on a docker container (listening on port 8080)
   ```bash
