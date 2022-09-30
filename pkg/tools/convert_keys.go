@@ -3,14 +3,12 @@ package tools
 import (
 	"encoding/hex"
 	"fmt"
-	"math/big"
-
-	"github.com/btcsuite/btcd/btcec"
 
 	"crypto/sha256"
 
+	"github.com/btcsuite/btcd/btcec/v2"
+
 	"github.com/btcsuite/btcutil/base58"
-	"github.com/ethereum/go-ethereum/crypto/secp256k1"
 	"golang.org/x/crypto/ripemd160"
 )
 
@@ -159,16 +157,12 @@ func GetAddressFromPrivkey(
 
 // ecdsaPrivKeyFromString converts a private key in hex format to a btcec.PrivateKey
 func ecdsaPrivKeyFromString(privKeyHexStr string) (*btcec.PrivateKey, error) {
-	privKey := new(btcec.PrivateKey)
-
-	D := new(big.Int)
-	D, ok := D.SetString(privKeyHexStr, 16)
-	if !ok {
-		return nil, fmt.Errorf("failed to parse private key into integer")
+	pkBytes, err := hex.DecodeString(privKeyHexStr)
+	if err != nil {
+		return nil, err
 	}
-	privKey.D = D
-	privKey.PublicKey.Curve = secp256k1.S256()
-	privKey.PublicKey.X, privKey.PublicKey.Y = privKey.PublicKey.Curve.ScalarBaseMult(privKey.D.Bytes())
+	privKey, _ := btcec.PrivKeyFromBytes(pkBytes)
+
 	return privKey, nil
 }
 
