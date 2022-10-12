@@ -8,6 +8,10 @@ type GetAddressFromPrivkeyResult struct {
 	AddressBase58 string `json:"addressBase58"`
 }
 
+func (g *GetAddressFromPrivkeyResult) String() string {
+	return g.AddressBase58
+}
+
 type ScriptPubKey struct {
 	Hex string `json:"hex"`
 	Asm string `json:"asm"`
@@ -24,18 +28,14 @@ type ConvertPrivateKeyResult struct {
 	PrivateKey string `json:"privKey"`
 }
 
-// func NewConvertPrivateKeyResult(privateKey string) *ConvertPrivateKeyResult {
-// 	return &ConvertPrivateKeyResult{
-// 		PrivateKey: privateKey,
-// 	}
-// }
+func (c *ConvertPrivateKeyResult) String() string {
+	return c.PrivateKey
+}
 
 type ConvertAddressResult struct {
 	Address string `json:"address"`
 }
 
-// func NewConvertAddressResult(address string) *ConvertAddressResult {
-// 	return &ConvertAddressResult{
-// 		Address: address,
-// 	}
-// }
+func (c *ConvertAddressResult) String() string {
+	return c.Address
+}

@@ -7,6 +7,8 @@ import (
 	"github.com/btcsuite/btcutil/base58"
 )
 
+// ConvertAddressHexToBase58 converts an address in hex format to a base58 address
+// Note this conversion is dependent on the network (mainnet or testnet) and blockchain (bitcoin or qtum)
 func ConvertAddressHexToBase58(addressHex string, blockchain, network string) (*ConvertAddressResult, error) {
 	err := verifyBlockchain(blockchain)
 	if err != nil {
@@ -32,6 +34,7 @@ func ConvertAddressHexToBase58(addressHex string, blockchain, network string) (*
 	}, nil
 }
 
+// ConvertAddressBase58ToHex converts an address in base58 format to a hex encoded address
 func ConvertAddressBase58ToHex(addressBase58 string) (*ConvertAddressResult, error) {
 	hexAddress, err := Base58ToHex(addressBase58)
 	if err != nil {
