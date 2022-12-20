@@ -7,22 +7,21 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
  
-Makefile:9: "could not find richgo in /Users/alejoacosta/.yarn/bin:/Users/alejoacosta/.config/yarn/global/node_modules/.bin:/Users/alejoacosta/.nvm/versions/node/v16.13.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/alejoacosta/code/bitcoin/bitcoin/src:/Users/alejoacosta/go/bin/, run: go get github.com/kyoh86/richgo"
+make: *** No rule to make target `all'.  Stop.
 
-******************** checking formatting ********************
- 
 
-# Make data base, printed on Thu Aug 18 13:09:55 2022
+# Make data base, printed on Mon Dec 19 18:09:23 2022
 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
+ 
 # environment
 NVM_IOJS_ORG_MIRROR = https://iojs.org/dist
 # automatic
 ?F = $(notdir $?)
-# makefile (from `Makefile', line 2)
+# makefile (from `Makefile', line 7)
 SRC = $(shell find . -name "*.go")
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
@@ -31,10 +30,10 @@ SRC = $(shell find . -name "*.go")
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/alejoacosta/code/golang/b58address-converter/qtool
-# makefile
-SHELL = /bin/sh
-# makefile (from `Makefile', line 1)
+CURDIR := /Users/alejoacosta/code/qtum/qtool
+# makefile (from `Makefile', line 4)
+SHELL = /bin/bash
+# makefile (from `Makefile', line 6)
 BIN = "./bin"
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
@@ -53,15 +52,15 @@ VSCODE_CWD = /
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # environment
-PATH = /Users/alejoacosta/.yarn/bin:/Users/alejoacosta/.config/yarn/global/node_modules/.bin:/Users/alejoacosta/.nvm/versions/node/v16.13.2/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/alejoacosta/code/bitcoin/bitcoin/src:/Users/alejoacosta/go/bin/
+PATH = /Users/alejoacosta/.yarn/bin:/Users/alejoacosta/.config/yarn/global/node_modules/.bin:/Users/alejoacosta/.nvm/versions/node/v16.13.2/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/alejoacosta/code/bitcoin/bitcoin/src:/Users/alejoacosta/go/bin/
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
+# makefile (from `Makefile', line 8)
+GOVERALLS_INSTALL = go install github.com/mattn/goveralls@latest
 # environment
 GOPATH = /Users/alejoacosta/go
 # environment
 NVM_BIN = /Users/alejoacosta/.nvm/versions/node/v16.13.2/bin
-# environment
-LaunchInstanceID = 08007AF2-3D4C-40FA-B712-8F501A2EBB56
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
@@ -70,13 +69,12 @@ ELECTRON_RUN_AS_NODE = 1
 SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.DRV7yrRLvm/Listeners
 # automatic
 %F = $(notdir $%)
- 
 # environment
-PWD = /Users/alejoacosta/code/golang/b58address-converter/qtool
+PWD = /Users/alejoacosta/code/qtum/qtool
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-MANPATH = /Users/alejoacosta/.nvm/versions/node/v16.13.2/share/man:/usr/local/share/man:/usr/share/man:/Library/Apple/usr/share/man:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/share/man:/Library/Developer/CommandLineTools/usr/share/man
+MANPATH = /Users/alejoacosta/.nvm/versions/node/v16.13.2/share/man:/Library/Frameworks/Python.framework/Versions/3.10/share/man:/usr/local/share/man:/usr/share/man:/Library/Apple/usr/share/man:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/share/man:/Library/Developer/CommandLineTools/usr/share/man
 # environment
 GOMODCACHE = /Users/alejoacosta/go/pkg/mod
 # environment
@@ -84,13 +82,15 @@ HOME = /Users/alejoacosta
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/alejoacosta/Library/Application Support/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
+VSCODE_CODE_CACHE_PATH = /Users/alejoacosta/Library/Application Support/Code/CachedData/8fa188b2b301d36553cbc9ce1b0a146ccb93351f
 # environment
 LOGNAME = alejoacosta
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 NVM_CD_FLAGS = -q
+# makefile (from `Makefile', line 11)
+TEST_SCRIPT = richgo test -v ${GO_PACKAGES}
 # environment
 ZSH = /Users/alejoacosta/.oh-my-zsh
 # environment
@@ -112,11 +112,15 @@ MAKE_VERSION := 3.81
 # environment
 USER = alejoacosta
 # makefile
-.DEFAULT_GOAL := default
+.DEFAULT_GOAL := fmt
 # environment
-LESS = -R
+LESS = -FRX
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
+# makefile (from `Makefile', line 5)
+REBUILD = false
+# makefile (from `Makefile', line 9)
+GOVERALLS_CMD = goveralls
 # default
 MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
@@ -126,7 +130,7 @@ TMPDIR = /var/folders/j0/c19bqd6173z749tlfrn7tjm00000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/alejoacosta/Library/Application Support/Code/1.70.2-main.sock
+VSCODE_IPC_HOOK = /Users/alejoacosta/Library/Application Support/Code/1.73.0-main.sock
 # environment
 MallocNanoZone = 0
 # makefile
@@ -138,7 +142,8 @@ MFLAGS = -Rrqp
 # environment
 NVM_DIR = /Users/alejoacosta/.nvm
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.33123011.33123017
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.39805240.39805246
+ 
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -157,8 +162,8 @@ PAGER = less
 LC_ALL = C
 # environment
 NVM_NODEJS_ORG_MIRROR = https://nodejs.org/dist
-# environment
-SECURITYSESSIONID = 186a5
+# makefile (from `Makefile', line 10)
+GO_PACKAGES = ./pkg/... ./qtool-api/... ./qtool-cli/...
 # automatic
 ^F = $(notdir $^)
 # default
@@ -170,9 +175,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1941
+VSCODE_PID = 57437
 # variable set hash-table stats:
-# Load=77/1024=8%, Rehash=0, Collisions=3/118=3%
+# Load=80/1024=8%, Rehash=0, Collisions=3/109=3%
 
 # Pattern-specific Variable Values
 
@@ -180,9 +185,9 @@ VSCODE_PID = 1941
 
 # Directories
 
-# . (device 16777222, inode 31407908): 15 files, no impossibilities.
+# . (device 16777222, inode 31407908): 18 files, no impossibilities.
 
-# 15 files, no impossibilities in 1 directories.
+# 18 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -190,18 +195,61 @@ VSCODE_PID = 1941
 
 # Files
 
-all: fmt test
+stop-compose-dev:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 81):
+	$(info ******************** stopping DEV qtool web containers from docker compose ********************)
+	@cd docker ; docker-compose -f docker-compose-dev.yml down
+	
+
+# Not a target:
+all:
 #  Command-line target.
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
+#  File has not been updated.
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/12=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-.PHONY: fmt lint test install_deps clean
+build-docker-react-prod:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 55):
+	@IMAGE=$$(docker images -q qtum/qtool-react 2> /dev/null) ; \
+	if [ "$$IMAGE" == "" || $(REBUILD) ] ; \
+	$(info ******************** building qtool-react docker image ********************) \
+	then cd react-web-app; docker build -t qtum/qtool-react:latest . ; \ 
+	fi
+	
+
+.PHONY: deps build run run-api-docker fmt lint test install_deps clean coverage format stop-compose-dev
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+stop-compose-prod:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 73):
+	$(info ******************** stopping PROD qtool web containers from docker compose ********************)
+	@cd docker ; docker-compose -f docker-compose.yml down
+	
+
+run-api-docker:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+deps:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
 #  File has not been updated.
 
 # Not a target:
@@ -210,10 +258,16 @@ all: fmt test
 #  Modification time never checked.
 #  File has not been updated.
 
+format:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-18 10:43:27
+#  Last modified 2022-08-22 11:35:03
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -224,22 +278,42 @@ test: install_deps
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 27):
+#  commands to execute (from `Makefile', line 30):
 	$(info ******************** running tests ********************)
-	richgo test -v ./...
+	${TEST_SCRIPT}
+	# richgo test -v ${GO_PACKAGES}
 	
 
-default: all
+build:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+start-compose-dev:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+#  commands to execute (from `Makefile', line 77):
+	$(info ******************** running DEV qtool web on docker compose ********************)
+	@cd docker ; docker-compose -f docker-compose-dev.yml up -d
+	
+
+start-compose-prod:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 69):
+	$(info ******************** running PROD qtool web on docker compose ********************)
+	@cd docker ; docker-compose -f docker-compose.yml up -d
+	
 
 install_deps:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 31):
+#  commands to execute (from `Makefile', line 35):
 	$(info ******************** downloading dependencies ********************)
 	go get -v ./...
 	
@@ -250,41 +324,50 @@ install_deps:
 #  Modification time never checked.
 #  File has not been updated.
 
+run:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
 clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 35):
+#  commands to execute (from `Makefile', line 85):
 	rm -rf $(BIN)
+	docker rm -f qtool-api qtool-react
+	docker rmi -f qtum/qtool-api qtum/qtool-react
+	
+
+coverage:
+#  Phony target (prerequisite of .PHONY).
+ 
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 39):
+	$(info ******************** running coverage ********************)
+	${GOVERALLS_INSTALL}
+	if [ "${COVERALLS_TOKEN}" ]; then ${TEST_SCRIPT} -coverprofile=c.out -covermode=count; ${GOVERALLS_CMD} -coverprofile=c.out -repotoken ${COVERALLS_TOKEN}; fi
+	
+
+build-cli:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 44):
+	$(info ******************** building qtool-cli ********************)
+	go build -v -o ${BIN}/qtool-cli ./qtool-cli/main.go
 	
 
 fmt:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: `'
 #  File does not exist.
-#  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := fmt
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := 
-# automatic
-# | := 
-# automatic
-# < := 
-# automatic
-# ^ := 
-# automatic
-# ? := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=5/20=25%
-#  commands to execute (from `Makefile', line 19):
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 22):
 	$(info ******************** checking formatting ********************)
 	@test -z $(shell gofmt -l $(SRC)) || (gofmt -d $(SRC); exit 1)
 	
@@ -294,13 +377,25 @@ lint:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 23):
+#  commands to execute (from `Makefile', line 26):
 	$(info ******************** running lint tools ********************)
 	golangci-lint run -v
 	
 
+build-docker-api:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 48):
+	@IMAGE=$$(docker images -q qtum/qtool-api 2> /dev/null) ; \
+	if [ "$$IMAGE" == "" || $(REBUILD) ] ; \
+	$(info ******************** rebuilding qtool-api docker image ********************) \
+	then docker build -t qtum/qtool-api . ; \ 
+	fi
+	
+
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/34=0%
+# Load=23/1024=2%, Rehash=0, Collisions=0/48=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -312,6 +407,6 @@ lint:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Aug 18 13:09:55 2022
+# Finished Make data base on Mon Dec 19 18:09:23 2022
 
  

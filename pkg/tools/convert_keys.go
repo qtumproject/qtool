@@ -6,7 +6,7 @@ import (
 
 	"crypto/sha256"
 
-	"github.com/btcsuite/btcd/btcec/v2"
+	"github.com/qtumproject/btcd/btcec/v2"
 
 	"github.com/btcsuite/btcutil/base58"
 	"golang.org/x/crypto/ripemd160"

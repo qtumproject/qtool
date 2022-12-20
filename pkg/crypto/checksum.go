@@ -1,10 +1,8 @@
-package tools
+package crypto
 
 import (
 	"crypto/sha256"
 )
-
-// TODO: delete this file. Replaced by the one in the crypto package
 
 // Checksum() generates a 4 bytes double sha256 checksum from given input
 func Checksum(input []byte) (cksum [4]byte) {
