@@ -25,11 +25,12 @@ type P2pkToAddressResult struct {
 }
 
 type ConvertPrivateKeyResult struct {
-	PrivateKey string `json:"privKey"`
+	WIF        string `json:"wif"`
+	PrivateKey string `json:"privateKey"`
 }
 
 func (c *ConvertPrivateKeyResult) String() string {
-	return c.PrivateKey
+	return c.WIF
 }
 
 type ConvertAddressResult struct {

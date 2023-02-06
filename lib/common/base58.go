@@ -1,10 +1,12 @@
-package tools
+package common
 
 import (
 	"encoding/hex"
 
 	"github.com/btcsuite/btcutil/base58"
 )
+
+// TODO : delelte this file. Replaced by the one in the encoding package
 
 // Base58ToHex converts a base58 string to a hex string
 func Base58ToHex(input string) (string, error) {

@@ -4,6 +4,8 @@ import (
 	"encoding/hex"
 	"fmt"
 	"strconv"
+
+	"github.com/qtumproject/qtool/lib/common"
 )
 
 // AddressFromP2PKScript extracts the pubkey from a pay-to-pubkey script and returns a 'P2pkToAddressResult' struct.
@@ -14,7 +16,7 @@ func AddressFromP2PKScript(scriptPubKeyHexStr string, blockchain, network string
 	}
 
 	opcode := scriptPubKeyHexStr[len(scriptPubKeyHexStr)-2:]
-	if opcode != OP_CHECKSIG {
+	if opcode != common.OP_CHECKSIG {
 		return nil, fmt.Errorf("expected opcode '0xac' (OP_CHECKSIG) but found opcode '0x%s'", opcode)
 	}
 
