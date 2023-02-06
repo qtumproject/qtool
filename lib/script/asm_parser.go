@@ -8,7 +8,7 @@ import (
 	"github.com/pkg/errors"
 
 	"github.com/qtumproject/btcd/txscript"
-	"github.com/qtumproject/qtool/pkg/common"
+	"github.com/qtumproject/qtool/lib/common"
 )
 
 // Returns the opcodes found in the scriptPubKey

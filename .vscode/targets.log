@@ -7,18 +7,19 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 
 # This program built for i386-apple-darwin11.3.0
  
+Makefile:14: "could not find golangci-lint in /opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin, run: curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh"
+
+Makefile:18: "could not find richgo in /opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin, run: go get github.com/kyoh86/richgo"
+
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Mon Dec 19 18:09:23 2022
+# Make data base, printed on Mon Feb  6 16:01:37 2023
 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
- 
-# environment
-NVM_IOJS_ORG_MIRROR = https://iojs.org/dist
 # automatic
 ?F = $(notdir $?)
 # makefile (from `Makefile', line 7)
@@ -39,12 +40,17 @@ BIN = "./bin"
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/bin/make
+# environment
+_P9K_SSH_TTY = 
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+ 
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
+# environment
+INFOPATH = /opt/homebrew/share/info:
 # environment
 P9K_SSH = 0
 # environment
@@ -52,7 +58,7 @@ VSCODE_CWD = /
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # environment
-PATH = /Users/alejoacosta/.yarn/bin:/Users/alejoacosta/.config/yarn/global/node_modules/.bin:/Users/alejoacosta/.nvm/versions/node/v16.13.2/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/Users/alejoacosta/code/bitcoin/bitcoin/src:/Users/alejoacosta/go/bin/
+PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # makefile (from `Makefile', line 8)
@@ -60,21 +66,23 @@ GOVERALLS_INSTALL = go install github.com/mattn/goveralls@latest
 # environment
 GOPATH = /Users/alejoacosta/go
 # environment
-NVM_BIN = /Users/alejoacosta/.nvm/versions/node/v16.13.2/bin
+LaunchInstanceID = 2F78E54C-720B-4FBE-86F4-0AC27398B659
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.DRV7yrRLvm/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.IZhmSfHI7H/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
 PWD = /Users/alejoacosta/code/qtum/qtool
 # environment
+HOMEBREW_CELLAR = /opt/homebrew/Cellar
+# environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-MANPATH = /Users/alejoacosta/.nvm/versions/node/v16.13.2/share/man:/Library/Frameworks/Python.framework/Versions/3.10/share/man:/usr/local/share/man:/usr/share/man:/Library/Apple/usr/share/man:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/share/man:/Library/Developer/CommandLineTools/usr/share/man
+MANPATH = /opt/homebrew/share/man::
 # environment
 GOMODCACHE = /Users/alejoacosta/go/pkg/mod
 # environment
@@ -82,13 +90,11 @@ HOME = /Users/alejoacosta
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/alejoacosta/Library/Application Support/Code/CachedData/8fa188b2b301d36553cbc9ce1b0a146ccb93351f
+VSCODE_CODE_CACHE_PATH = /Users/alejoacosta/Library/Application Support/Code/CachedData/97dec172d3256f8ca4bfb2143f3f76b503ca0534
 # environment
 LOGNAME = alejoacosta
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# environment
-NVM_CD_FLAGS = -q
 # makefile (from `Makefile', line 11)
 TEST_SCRIPT = richgo test -v ${GO_PACKAGES}
 # environment
@@ -105,8 +111,6 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 1
-# environment
-JAVA_HOME = /Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
 # default
 MAKE_VERSION := 3.81
 # environment
@@ -114,7 +118,7 @@ USER = alejoacosta
 # makefile
 .DEFAULT_GOAL := fmt
 # environment
-LESS = -FRX
+LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # makefile (from `Makefile', line 5)
@@ -126,11 +130,11 @@ MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
 .VARIABLES := 
 # environment
-TMPDIR = /var/folders/j0/c19bqd6173z749tlfrn7tjm00000gn/T/
+TMPDIR = /var/folders/vl/38hwl12551gb12yxl99cbbp80000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/alejoacosta/Library/Application Support/Code/1.73.0-main.sock
+VSCODE_IPC_HOOK = /Users/alejoacosta/Library/Application Support/Code/1.74.3-main.sock
 # environment
 MallocNanoZone = 0
 # makefile
@@ -140,14 +144,15 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-NVM_DIR = /Users/alejoacosta/.nvm
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.2079533.2079539
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.39805240.39805246
- 
+HOMEBREW_PREFIX = /opt/homebrew
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
 +F = $(notdir $+)
+# environment
+HOMEBREW_REPOSITORY = /opt/homebrew
 # environment
 __CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
 # environment
@@ -160,10 +165,10 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
-# environment
-NVM_NODEJS_ORG_MIRROR = https://nodejs.org/dist
 # makefile (from `Makefile', line 10)
 GO_PACKAGES = ./pkg/... ./qtool-api/... ./qtool-cli/...
+# environment
+SECURITYSESSIONID = 186a4
 # automatic
 ^F = $(notdir $^)
 # default
@@ -175,9 +180,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 57437
+VSCODE_PID = 455
 # variable set hash-table stats:
-# Load=80/1024=8%, Rehash=0, Collisions=3/109=3%
+# Load=81/1024=8%, Rehash=0, Collisions=2/112=2%
 
 # Pattern-specific Variable Values
 
@@ -185,9 +190,9 @@ VSCODE_PID = 57437
 
 # Directories
 
-# . (device 16777222, inode 31407908): 18 files, no impossibilities.
+# . (device 16777234, inode 1787423): 19 files, no impossibilities.
 
-# 18 files, no impossibilities in 1 directories.
+# 19 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -212,6 +217,7 @@ all:
 #  File does not exist.
 #  File has not been updated.
 # variable set hash-table stats:
+ 
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 build-docker-react-prod:
@@ -343,7 +349,6 @@ clean:
 
 coverage:
 #  Phony target (prerequisite of .PHONY).
- 
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
@@ -407,6 +412,6 @@ build-docker-api:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Dec 19 18:09:23 2022
+# Finished Make data base on Mon Feb  6 16:01:37 2023
 
  

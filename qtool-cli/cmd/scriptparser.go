@@ -6,7 +6,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/qtumproject/qtool/pkg/script"
+	"github.com/qtumproject/qtool/lib/script"
 	"github.com/spf13/cobra"
 )
 

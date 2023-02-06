@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/qtumproject/btcd/txscript"
-	"github.com/qtumproject/qtool/pkg/common"
+	"github.com/qtumproject/qtool/lib/common"
 	"github.com/stretchr/testify/assert"
 )
 

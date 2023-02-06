@@ -10,7 +10,7 @@ import (
 	"github.com/shopspring/decimal"
 )
 
-// Converts a satoshis to qtum balance
+// Converts a satoshis balance to qtum balance
 func ConvertFromSatoshisToQtum(inSatoshis decimal.Decimal) decimal.Decimal {
 	return inSatoshis.Div(decimal.NewFromFloat(float64(1e8)))
 }
@@ -43,4 +43,40 @@ func ConvertHexFromSatoshiToWei(inSatoshis string) (string, error) {
 		inWei = strings.TrimPrefix(inWei, "0x")
 	}
 	return inWei, nil
+}
+
+// Converts a hex string representing a value in wei to a value in satoshis
+func ConvertHexFromWeiToSatoshi(inWei string) (string, error) {
+	hasPrefix := true
+	if !strings.HasPrefix(inWei, "0x") {
+		inWei = "0x" + inWei
+		hasPrefix = false
+	}
+	valWei, err := hexutil.DecodeBig(inWei)
+	if err != nil {
+		return "", errors.Wrap(err, "error decoding wei")
+	}
+
+	valSatoshis := valWei.Div(valWei, big.NewInt(1e10))
+	inSatoshis := hexutil.EncodeBig(valSatoshis)
+	if !hasPrefix {
+		inSatoshis = strings.TrimPrefix(inSatoshis, "0x")
+	}
+	return inSatoshis, nil
+}
+
+// Converts a hex string representing a value in wei to a
+// float representing the value in qtum
+func ConvertWeiToQtum(inWei string) (float64, error) {
+	inSat, err := ConvertHexFromWeiToSatoshi(inWei)
+	if err != nil {
+		return 0, err
+	}
+	inSatoshis, err := hexutil.DecodeBig(inSat)
+	if err != nil {
+		return 0, err
+	}
+	inQtum := ConvertFromSatoshisToQtum(decimal.NewFromBigInt(inSatoshis, 0))
+	result, _ := inQtum.Float64()
+	return result, nil
 }
