@@ -8,7 +8,7 @@ import (
 	"github.com/qtumproject/btcd/txscript"
 	"github.com/qtumproject/qtool/lib/common"
 	"github.com/qtumproject/qtool/lib/script"
-	qtool "github.com/qtumproject/qtool/pkg/tools"
+	qtool "github.com/qtumproject/qtool/lib/tools"
 )
 
 type QtumTxRawResult struct {
